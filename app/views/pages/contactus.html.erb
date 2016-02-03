@@ -77,8 +77,49 @@
                             </div>
                         </div>
                         <div class="clearfix"></div>
-                        <!-- <div class="enquiry-btn-box"><button class="enquiry-btn"> Enquiry</button></div>--></div>
+                       </div>
                 </div>
             </div>
         </div>
+        <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+    <script>
+        // This example displays a marker at the center of Australia.
+        // When the user clicks the marker, an info window opens.
+
+        function initialize() {
+            var myLatlng = new google.maps.LatLng(12.7204233, 77.820006);
+            var mapOptions = {
+                zoom: 8,
+                center: myLatlng
+            };
+
+            var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+            var contentString = '<div id="content">' +
+                '<div id="siteNotice">' +
+                '</div>' +
+                '<h3 id="firstHeading" class="firstHeading">Shivam Steels</h3>' +
+                '<div id="bodyContent">' +
+                '<p>Door No. 12/1, NA ' +
+                'Vaishnavi Nagar, Bangalore Road ' +
+                'Hosur- (Tamilnadu), INDIA  </p>' +
+                '</div>' +
+                '</div>';
+
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: 'Shivam Steels'
+            });
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.open(map, marker);
+            });
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
     </section>
